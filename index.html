@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="PRO Tennis × Your Agency">
+<meta property="og:description" content="Что работает в вашем Instagram и план на первый месяц">
+<meta property="og:image" content="https://osho4753.github.io/protennis/img/cover.jpg">
+<title>PRO Tennis: разбор и план</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  /* Layout: разбор как сторис в Instagram. Одна карточка = одна мысль, листается тапом, свайпом и стрелками.
+     Единый тёмный мир бренда Your Agency: moss-фон, органические пятна, зерно, молочный текст. */
+  :root {
+    color-scheme: dark;
+    --moss: #121212; --forest: #24201c; --sage: #6b5444; --teal: #b8643c; --milk: #f4f1ea; --paper: #e7e0d4; --ink: #121212;
+    --milk-dim: rgba(244, 241, 234, 0.72); --line: rgba(244, 241, 234, 0.18);
+    /* их цвета, снятые с аватарки и сетки */
+    --pf-ball: #d4ec3a;
+    --sans: "Golos Text", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Oswald", "Arial Narrow", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+  html, body { height: 100%; }
+  /* страница вокруг сторис светлая (paper из брендбука), чтобы тёмная карточка на ней читалась отдельным объектом */
+  body { background: var(--paper); color: var(--milk); font-family: var(--sans); overflow: hidden; }
+  .bg { position: fixed; inset: 0; pointer-events: none; }
+  .bg i { position: absolute; display: block; border-radius: 46% 54% 40% 60% / 55% 40% 60% 45%; }
+  .bg i:nth-child(1) { width: 70vmax; height: 70vmax; left: -26vmax; top: 44vh; background: var(--sage); opacity: 0.35; }
+  .bg i:nth-child(2) { width: 34vmax; height: 34vmax; right: -12vmax; top: -14vmax; background: var(--forest); opacity: 0.22; }
+  .bg i:nth-child(3) { width: 18vmax; height: 18vmax; right: 6vw; bottom: -7vmax; background: var(--teal); opacity: 0.3; }
+  .grain { position: fixed; inset: 0; pointer-events: none; opacity: 0.12; mix-blend-mode: multiply; z-index: 40;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='7'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>"); }
+
+  .stage { position: relative; height: 100%; display: grid; place-items: center;
+    padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .deck { position: relative; width: min(440px, 100%); height: min(880px, 100%); border-radius: 28px; overflow: hidden;
+    background: var(--moss); box-shadow: 0 30px 80px rgba(18, 18, 18, 0.28); touch-action: pan-y; user-select: none; }
+  .bars { position: absolute; z-index: 20; left: 14px; right: 14px; top: 12px; display: flex; gap: 4px; }
+  .bars span { flex: 1; height: 3px; border-radius: 2px; background: rgba(244, 241, 234, 0.28); overflow: hidden; }
+  .bars span b { display: block; height: 100%; width: 0; background: var(--milk); transition: width 0.35s ease; }
+  .bars span.done b { width: 100%; }
+  .who { position: absolute; z-index: 20; left: 14px; right: 14px; top: 24px; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; }
+  .who img { width: 30px; height: 30px; border-radius: 50%; box-shadow: 0 0 0 2px var(--milk); }
+  .who small { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin-left: auto; }
+
+  .slide { position: absolute; inset: 0; padding: 78px 22px 26px; display: flex; flex-direction: column; gap: 16px;
+    isolation: isolate; opacity: 0; visibility: hidden; transform: translateX(14px); transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s; }
+  .slide.on { opacity: 1; visibility: visible; transform: none; }
+  .photo { position: absolute; inset: 0; z-index: -1; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 18, 18, 0.55) 0%, rgba(18, 18, 18, 0.15) 38%, rgba(18, 18, 18, 0.92) 78%, var(--moss) 100%); }
+  .eyebrow { font-family: var(--mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--milk-dim); }
+  h1, h2 { margin: 0; font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0; line-height: 1.02; text-wrap: balance; }
+  h1 { font-size: min(44px, 11vw); } h2 { font-size: min(34px, 8.6vw); }
+  h1 em, h2 em { font-style: normal; color: #d4ec3a; }
+  .sub { margin: 0; font-size: 16px; line-height: 1.45; color: var(--milk-dim); }
+  .push { margin-top: auto; }
+  .hint { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--milk-dim); display: flex; align-items: center; gap: 8px; }
+  .hint::after { content: "→"; font-family: var(--sans); font-size: 18px; animation: nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge { 50% { transform: translateX(6px); } }
+
+  .tap { position: absolute; top: 60px; bottom: 0; width: 30%; z-index: 10; cursor: pointer; }
+  .tap.prev { left: 0; } .tap.next { right: 0; }
+  .ui { position: relative; z-index: 12; }
+
+  /* 2 · большие числа */
+  .vs { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 10px; margin-top: 8px; }
+  .vs div { min-width: 0; }
+  .vs b { display: block; font-family: var(--serif); font-size: 60px; font-weight: 700; letter-spacing: -0.04em; line-height: 0.9; font-variant-numeric: tabular-nums; }
+  .vs span { font-size: 13px; color: var(--milk-dim); }
+  .vs .x { font-family: var(--serif); font-size: 26px; color: #d4ec3a; padding-bottom: 14px; }
+  .meter { height: 14px; border-radius: 7px; background: var(--line); overflow: hidden; }
+  .meter i { display: block; height: 100%; width: 23%; border-radius: 7px; background: var(--milk); transition: width 1s cubic-bezier(.2,.8,.2,1); }
+  .on .meter i.go { width: 100%; background: var(--pf-ball); }
+
+  /* 3 · интерактивный график */
+  .chart { background: rgba(0, 0, 0, 0.16); border-radius: 18px; padding: 14px 12px 10px; }
+  .chart svg { display: block; width: 100%; height: auto; }
+  .chart rect.bar { cursor: pointer; transition: opacity 0.2s; }
+  .pick { border-radius: 16px; background: var(--milk); color: var(--moss); padding: 14px 16px; display: grid; gap: 4px; min-height: 86px; }
+  .pick b { font-size: 17px; } .pick span { font-size: 14px; opacity: 0.8; }
+  .pick .m { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; }
+
+  /* 4 · что зашло: раскрывающиеся строки */
+  .acc { display: grid; gap: 8px; }
+  .acc button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; border-radius: 14px; padding: 12px 14px; background: rgba(18, 18, 18, 0.78);
+    box-shadow: inset 0 0 0 1px var(--line); display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; align-items: center; }
+  .acc button:focus-visible, .chip:focus-visible, .tab:focus-visible, .fcard:focus-visible, .seg button:focus-visible { outline: 2px solid var(--pf-ball); outline-offset: 2px; }
+  .acc .t { font-weight: 600; font-size: 16px; }
+  .acc .n { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--moss); background: var(--pf-ball); border-radius: 8px; padding: 3px 8px; }
+  .acc .n.low { background: var(--milk-dim); }
+  .acc .why { grid-column: 1 / -1; font-size: 14px; color: var(--milk-dim); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .acc button[aria-expanded="true"] .why { max-height: 90px; margin-top: 4px; }
+
+  /* 5 · мем в стиле бренда */
+  .meme { border-radius: 18px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; background: var(--milk); }
+  .meme .face { aspect-ratio: 1; background-image: url("img/drake_blank.jpg"); background-size: 200% 200%; background-position: 0 0; filter: saturate(0.55) sepia(0.15); }
+  .meme .face.yes { background-position: 0 100%; }
+  .meme .say { display: grid; place-items: center; padding: 10px; color: var(--moss); font-weight: 600; font-size: 17px; line-height: 1.15; text-align: center; }
+  .meme .say.no { text-decoration: line-through; text-decoration-color: rgba(18, 18, 18, 0.45); opacity: 0.75; }
+  .meme .say.yes em { font-style: normal; color: #b8643c; }
+
+  /* 6 · что мешает: карточки-флипы */
+  .chips { display: grid; gap: 10px; }
+  .chip { all: unset; box-sizing: border-box; cursor: pointer; border-radius: 16px; padding: 14px 16px; background: var(--paper); color: var(--ink); display: grid; gap: 4px; }
+  .chip .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; }
+  .chip .p { font-weight: 600; font-size: 17px; }
+  .chip .f { font-size: 14px; color: var(--forest); font-weight: 600; display: none; }
+  .chip[aria-pressed="true"] { background: var(--milk); }
+  .chip[aria-pressed="true"] .f { display: block; }
+  .chip[aria-pressed="true"] .k::after { content: " · как исправим"; }
+
+  /* 7 · их цвета */
+  .sw { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .sw div { border-radius: 14px; aspect-ratio: 0.8; padding: 8px; display: flex; flex-direction: column; justify-content: flex-end; box-shadow: inset 0 0 0 1px var(--line); }
+  .sw b { font-size: 12.5px; font-weight: 600; } .sw span { font-family: var(--mono); font-size: 10px; opacity: 0.75; }
+  .seg { display: inline-flex; background: rgba(0, 0, 0, 0.2); border-radius: 999px; padding: 4px; align-self: flex-start; }
+  .seg button { all: unset; cursor: pointer; padding: 7px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--milk-dim); }
+  .seg button[aria-pressed="true"] { background: var(--milk); color: var(--moss); }
+  .grid9 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; border-radius: 12px; overflow: hidden; }
+  .grid9 div { aspect-ratio: 4 / 5; background-size: cover; background-position: center; display: grid; place-items: center; transition: background 0.35s, filter 0.35s; position: relative; }
+  .grid9 div span { font-weight: 700; font-size: 12px; letter-spacing: 0.02em; text-align: center; padding: 4px; }
+
+  /* 8 · форматы: горизонтальная лента карточек */
+  /* лента не вылезает за края карточки: видна следующая карточка внутри рамки, снизу точки и стрелки */
+  .rail { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 18px; scrollbar-width: none; }
+  .rail::-webkit-scrollbar { display: none; }
+  .fcard { all: unset; box-sizing: border-box; cursor: pointer; flex: 0 0 84%; scroll-snap-align: start; border-radius: 18px; overflow: hidden; position: relative; aspect-ratio: 4 / 5; }
+  .railnav { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .dots { display: flex; gap: 6px; } .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line); transition: background 0.2s, width 0.2s; }
+  .dots i.on { width: 20px; border-radius: 4px; background: var(--pf-ball); }
+  .arrows { display: flex; gap: 6px; }
+  .arrows button { all: unset; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: rgba(244, 241, 234, 0.14); font-size: 16px; }
+  .arrows button:focus-visible { outline: 2px solid var(--pf-ball); }
+  /* фото-карточки на обложке, втором и последнем слайдах */
+  /* блок с фото занимает свободное место и ужимается на низких экранах, а не наезжает на текст */
+  .polas { position: relative; flex: 1 1 0; min-height: 90px; max-height: 260px; }
+  .pola { position: absolute; height: 86%; aspect-ratio: 3 / 4; max-width: 48%; border-radius: 14px; overflow: hidden; box-shadow: 0 0 0 4px var(--milk), 0 18px 40px rgba(0, 0, 0, 0.35); }
+  .pola img { width: 100%; height: 100%; object-fit: cover; }
+  .pola small { position: absolute; left: 8px; bottom: 8px; font-family: var(--mono); font-size: 10.5px; font-weight: 600; background: var(--milk); color: var(--moss); padding: 3px 7px; border-radius: 6px; }
+  .reels3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; flex: 1 1 0; min-height: 80px; max-height: 250px; }
+  .reels3 figure { margin: 0; position: relative; height: 100%; border-radius: 12px; overflow: hidden; }
+  .reels3 img { width: 100%; height: 100%; object-fit: cover; }
+  .reels3 figcaption { position: absolute; left: 6px; bottom: 6px; font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--milk); text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6); }
+  .reels3 figcaption::before { content: "▶ "; font-size: 9px; }
+  .fcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .fcard .ov { position: absolute; inset: 0; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px;
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0) 35%, rgba(18, 18, 18, 0.92) 100%); }
+  .fcard b { font-size: 20px; font-weight: 600; line-height: 1.05; }
+  .fcard span { font-size: 13.5px; color: var(--milk-dim); }
+  .fcard .you { display: none; color: var(--pf-ball); font-weight: 600; }
+  .fcard[aria-pressed="true"] .ov { background: rgba(18, 18, 18, 0.9); }
+  .fcard[aria-pressed="true"] .you { display: block; }
+  .fcard[aria-pressed="true"] .gen { display: none; }
+
+  /* 9 · план на месяц */
+  .tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .tab { all: unset; cursor: pointer; text-align: center; border-radius: 12px; padding: 10px 0; font-family: var(--mono); font-size: 12px; font-weight: 600; background: rgba(0, 0, 0, 0.2); color: var(--milk-dim); }
+  .tab[aria-selected="true"] { background: var(--milk); color: var(--moss); }
+  .wk { border-radius: 18px; background: var(--forest); padding: 18px; display: none; gap: 10px; }
+  .wk.on { display: grid; }
+  .wk h3 { margin: 0; font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0; font-size: 22px; line-height: 1.1; }
+  .wk h3 em { font-style: normal; color: #d4ec3a; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span { font-size: 13px; padding: 6px 10px; border-radius: 999px; background: rgba(244, 241, 234, 0.14); }
+  .goals { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .goals div { border-radius: 14px; padding: 10px 12px; box-shadow: inset 0 0 0 1px var(--line); }
+  .goals b { display: block; font-family: var(--serif); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; } .goals span { font-size: 12.5px; color: var(--milk-dim); }
+
+  /* 10 · демо-ролик */
+  .board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .board figure { margin: 0; display: grid; gap: 4px; }
+  .board img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 10px; }
+  .board figcaption { font-family: var(--mono); font-size: 10px; color: var(--milk-dim); }
+  /* плеер демо-ролика: вертикальный, как рилс, звук по нажатию */
+  .player { position: relative; flex: 1 1 0; min-height: 0; display: flex; justify-content: center; }
+  .player video { height: 100%; max-height: 100%; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 16px; object-fit: cover; background: #000; box-shadow: 0 0 0 3px var(--milk); }
+  .player button { all: unset; cursor: pointer; position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); padding: 7px 14px; border-radius: 999px;
+    background: rgba(18, 18, 18, 0.82); color: var(--milk); font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; white-space: nowrap; }
+  .player button:focus-visible { outline: 2px solid var(--pf-ball); }
+  body.wide .vis .player { flex: none; height: min(560px, 66vh); }
+  .soon { border-radius: 14px; padding: 12px 14px; background: rgba(0, 0, 0, 0.2); font-size: 13.5px; color: var(--milk-dim); }
+
+  .end h1 { font-size: 44px; }
+  .sign { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--milk-dim); }
+  .credit { font-size: 11px; color: var(--milk-dim); opacity: 0.7; }
+
+  .nav { position: fixed; z-index: 30; bottom: max(14px, env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
+  .nav button { all: unset; cursor: pointer; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--moss); color: var(--milk); font-size: 18px; }
+  .nav button:focus-visible { outline: 2px solid var(--pf-ball); }
+  /* стрелки живут под карточкой, а не поверх неё: снизу у сцены место под них */
+  @media (min-width: 700px) { .stage { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); } }
+  /* ПК: карточка становится широким слайдом, текст слева, визуал справа (обёртки .txt/.vis ставит скрипт) */
+  .txt, .vis { display: contents; }
+  body.wide .stage { padding-block: 14px; }
+  /* на ПК стрелки внутри карточки в шапке справа, ничего не перекрывают */
+  body.wide .nav { position: absolute; z-index: 25; top: 16px; right: 18px; bottom: auto; left: auto; transform: none; display: flex; }
+  body.wide .nav button { width: 34px; height: 34px; font-size: 15px; background: rgba(244, 241, 234, 0.14); }
+  body.wide .who small { margin-right: 96px; }
+  body.wide .deck { width: min(1200px, 100%); height: min(740px, 100%); border-radius: 24px; }
+  body.wide .slide { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 4vw, 56px); align-items: center; padding: clamp(64px, 12vh, 96px) clamp(28px, 4.5vw, 64px) clamp(18px, 4vh, 44px); }
+  body.wide .txt { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  body.wide .vis { display: flex; flex-direction: column; gap: 14px; min-width: 0; min-height: 0; max-height: 100%; justify-content: center; }
+  body.wide .push:empty { display: none; } body.wide .push { margin-top: 0; }
+  body.wide h1 { font-size: clamp(30px, 8vh, 64px); } body.wide h2 { font-size: clamp(24px, 6.4vh, 50px); } body.wide .sub { font-size: clamp(14px, 2.4vh, 18px); }
+  body.wide .txt { gap: clamp(8px, 2vh, 18px); } body.wide .vis { gap: clamp(8px, 1.6vh, 14px); }
+  body.wide .photo::after { background: linear-gradient(90deg, var(--moss) 0%, rgba(18, 18, 18, 0.86) 42%, rgba(18, 18, 18, 0.35) 100%); }
+  body.wide .vis .polas { flex: none; height: min(470px, 58vh); max-height: none; }
+  body.wide .vis .reels3 { flex: none; height: min(320px, 32vh); max-height: none; }
+  body.wide .vis .vs b { font-size: clamp(36px, 8vh, 64px); }
+  body.wide .vis .board img { max-height: 46vh; }
+  body.wide .vis .grid9 { max-height: 32vh; width: auto; aspect-ratio: 3 / 3.75; }
+  body.wide .vis .sw div { aspect-ratio: 2.4; }
+  body.wide .vis .chart svg { max-height: 40vh; }
+  body.wide .vis .fcard { max-height: 52vh; }
+  body.wide .soon, body.wide .vis .goals div { padding-block: 8px; }
+  body.wide .vis .goals b { font-size: clamp(16px, 3.6vh, 22px); }
+  body.wide .vis .grid9 { width: min(100%, 300px); align-self: center; }
+  body.wide .vis .sw div { aspect-ratio: 1.25; }
+  body.wide .vis .seg { align-self: center; }
+  body.wide .fcard { flex: 0 0 calc(50% - 5px); }
+  body.wide .board img { aspect-ratio: 9 / 15; }
+  body.wide .tap { top: 70px; width: 12%; }
+  @media (max-width: 699px) { .nav { display: none; } .deck { height: 100%; border-radius: 22px; } }
+  @media (prefers-reduced-motion: reduce) { .slide, .bars b, .meter i, .hint::after { transition: none; animation: none; } }
+  .vs b { font-size: min(52px, 11vw); white-space: nowrap; }
+  .meter i { width: 100%; } .on .meter i.go { width: 69%; }
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} img{max-width:100%}</style>
+</head>
+<body>
+
+
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="stage">
+  <div class="deck" id="deck" aria-roledescription="сторис" aria-label="Разбор Instagram PRO Tennis Academy">
+    <div class="bars" id="bars"></div>
+    <div class="who"><img src="img/avatar.jpg" alt="Логотип PRO Tennis"><span>protennis_prg × Your Agency</span><small id="count">1 / 11</small></div>
+
+    <!-- 1 · обложка -->
+    <section class="slide on" data-i="0">
+      <div class="photo"><img src="img/cover.jpg" alt=""></div>
+      <div class="push"></div>
+      <h1>PRO Tennis, мы посмотрели ваш <em>Instagram</em></h1>
+      <p class="sub">Что уже работает, что мешает расти и план на первый месяц. Без длинных текстов.</p>
+      <div class="hint">Нажмите справа или свайпните</div>
+    </section>
+
+    <!-- 2 · число -->
+    <section class="slide" data-i="1">
+      <div class="photo"><img src="img/balls.jpg" alt=""></div>
+      <div class="eyebrow">Главное число</div>
+      <h2>Ролики не доходят <em>даже до своих</em></h2>
+      <div class="push"></div>
+      <div class="vs"><div><b>5 860</b><span>подписчиков</span></div><div class="x">vs</div><div><b>4 052</b><span>просмотров у обычного рилса</span></div></div>
+      <div class="meter"><i id="m1"></i></div>
+      <p class="sub">При этом закреп 2023 года набрал 110 000. Аудитория есть, ей не хватает поводов смотреть.</p>
+    </section>
+
+    <!-- 3 · график -->
+    <section class="slide" data-i="2">
+      <div class="eyebrow">19 рилсов с июня</div>
+      <h2>Нажмите на любой <em>столбик</em></h2>
+      <div class="chart ui"><svg id="chart" viewBox="0 0 360 200" aria-label="Просмотры 19 рилсов по порядку публикации"></svg></div>
+      <div class="pick ui" id="pick" aria-live="polite"></div>
+      <p class="sub push">Пунктир показывает ваш обычный уровень: 4 052 просмотра.</p>
+    </section>
+
+    <!-- 4 · что зашло -->
+    <section class="slide" data-i="3">
+      <div class="photo"><img src="img/pair.jpg" alt=""></div>
+      <div class="eyebrow">Что зашло</div>
+      <h2>Люди и поводы, <em>а не</em> призывы</h2>
+      <div class="push"></div>
+      <div class="acc ui">
+        <button aria-expanded="true"><span class="t">«Приглашаем в команду»</span><span class="n">×27</span><span class="why">Закреп 2023 года: 110 000 просмотров. Новичок и продвинутый видят себя в ролике.</span></button>
+        <button aria-expanded="false"><span class="t">Родители и дети вместе</span><span class="n">×4,2</span><span class="why">Закреп 2022: 17 000 и 495 лайков. Уникальная услуга, о которой сейчас не говорят.</span></button>
+        <button aria-expanded="false"><span class="t">Мадейра, «Last chance»</span><span class="n">×2,4</span><span class="why">Кемп-серия: три ролика выше обычного. Путешествие продаёт мечту, а не тренировку.</span></button>
+        <button aria-expanded="false"><span class="t">Fun fact about tennis</span><span class="n">×2,0</span><span class="why">8 290 просмотров и 212 лайков, лучший по реакциям. Юмор сохраняют и пересылают.</span></button>
+        <button aria-expanded="false"><span class="t">«Ждём вас на тренировках!»</span><span class="n low">×0,4</span><span class="why">1 588 просмотров. Призыв без истории: новому человеку нечего смотреть.</span></button>
+      </div>
+    </section>
+
+    <!-- 5 · мем -->
+    <section class="slide" data-i="4">
+      <div class="eyebrow">Если коротко</div>
+      <h2>Алгоритм думает <em>так же</em></h2>
+      <div class="meme">
+        <div class="face" role="img" aria-label="Отказывается"></div><div class="say no">«Ждём вас на тренировках!»</div>
+        <div class="face yes" role="img" aria-label="Одобряет"></div><div class="say yes"><span>Тренер <em>отвечает</em> на ваши вопросы</span></div>
+      </div>
+      <p class="sub push">Призыв смотрят свои. Тренера с ответами смотрят все: ×1,3 у Александра уже сейчас.</p>
+    </section>
+
+    <!-- 6 · что мешает -->
+    <section class="slide" data-i="5">
+      <div class="eyebrow">Что мешает расти</div>
+      <h2>Три вещи, <em>нажмите</em> на каждую</h2>
+      <div class="chips ui">
+        <button class="chip" aria-pressed="false"><span class="k">Реакции</span><span class="p">12–98 лайков на тысячи просмотров</span><span class="f">Герой и сюжет в каждом ролике, вопрос в конце</span></button>
+        <button class="chip" aria-pressed="false"><span class="k">Дети</span><span class="p">«Kids 3.5+» в био, но в 19 рилсах детей нет</span><span class="f">Рубрика «Родитель и ребёнок» — то, что дало 17 000</span></button>
+        <button class="chip" aria-pressed="false"><span class="k">Профиль</span><span class="p">13 хайлайтов и разные шрифты в ленте</span><span class="f">6 хайлайтов и один шаблон обложек</span></button>
+      </div>
+      <div class="push"></div>
+    </section>
+
+    <!-- 7 · их цвета -->
+    <section class="slide" data-i="6">
+      <div class="eyebrow">Ваши цвета</div>
+      <h2>Что мы видим <em>у вас</em></h2>
+      <div class="sw">
+        <div style="background: #111111"><b>Логотип</b><span>#111111</span></div>
+        <div style="background: #b8643c"><b>Грунт</b><span>#B8643C</span></div>
+        <div style="background: #f4f1ea; color: #111"><b>Линии</b><span>#F4F1EA</span></div>
+        <div style="background: #d4ec3a; color: #111"><b>Мяч</b><span>#D4EC3A</span></div>
+      </div>
+      <div class="seg ui" role="group" aria-label="Сетка профиля"><button id="gNow" aria-pressed="false">Сейчас</button><button id="gNew" aria-pressed="true">В едином стиле</button></div>
+      <div class="grid9 ui" id="grid9"></div>
+      <p class="sub">Чёрно-белый логотип, грунт и мяч как акцент. Из этого соберём узнаваемую сетку.</p>
+    </section>
+
+    <!-- 8 · форматы -->
+    <section class="slide" data-i="7">
+      <div class="eyebrow">Что заходит у теннисных академий</div>
+      <h2>Листайте и <em>нажимайте</em></h2>
+      <div class="rail ui" id="rail">
+        <button class="fcard" aria-pressed="false"><img src="img/coach.jpg" alt=""><span class="ov"><b>Тренер отвечает</b><span class="gen">Один вопрос, один ответ, 20 секунд</span><span class="you">У вас: тренер Александр, уже ×1,3</span></span></button>
+        <button class="fcard" aria-pressed="false"><img src="img/drill.jpg" alt=""><span class="ov"><b>Родитель и ребёнок</b><span class="gen">Тренируются параллельно на соседних кортах</span><span class="you">У вас: закреп 2022 года набрал 17 000</span></span></button>
+        <button class="fcard" aria-pressed="false"><img src="img/hit.jpg" alt=""><span class="ov"><b>Fun fact и мемы</b><span class="gen">Шутка, понятная только теннисистам</span><span class="you">У вас: Fun fact, 212 лайков</span></span></button>
+        <button class="fcard" aria-pressed="false"><img src="img/net.jpg" alt=""><span class="ov"><b>Кемп-сериал</b><span class="gen">Эпизоды до, во время и после поездки</span><span class="you">У вас: Мадейра, а дальше Tenerife Camp</span></span></button>
+        <button class="fcard" aria-pressed="false"><img src="img/legs.jpg" alt=""><span class="ov"><b>Первая тренировка</b><span class="gen">Ожидание и реальность новичка</span><span class="you">У вас: «Tennis for everyone» из био</span></span></button>
+        <button class="fcard" aria-pressed="false"><img src="img/player.jpg" alt=""><span class="ov"><b>Турнир за 15 секунд</b><span class="gen">Только лучшие розыгрыши и реакции</span><span class="you">У вас: Prague Grand Slam, сейчас ×0,5</span></span></button>
+      </div>
+      <div class="railnav ui"><div class="dots" id="dots"></div><div class="arrows"><button id="rPrev" aria-label="Предыдущий формат">←</button><button id="rNext" aria-label="Следующий формат">→</button></div></div>
+      <p class="sub push">Нажмите на карточку, чтобы увидеть, как формат ложится на вашу академию.</p>
+    </section>
+
+    <!-- 9 · план на месяц -->
+    <section class="slide" data-i="8">
+      <div class="eyebrow">План на первый месяц</div>
+      <h2>Четыре недели, <em>три рилса</em> в каждой</h2>
+      <div class="tabs ui" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" data-w="0">Нед. 1</button><button class="tab" role="tab" aria-selected="false" data-w="1">Нед. 2</button>
+        <button class="tab" role="tab" aria-selected="false" data-w="2">Нед. 3</button><button class="tab" role="tab" aria-selected="false" data-w="3">Нед. 4</button>
+      </div>
+      <div class="wk on ui"><h3>Упаковка <em>профиля</em></h3><div class="tags"><span>6 хайлайтов вместо 13</span><span>закреп «Первая тренировка»</span><span>шаблон обложек</span><span>био RU + EN</span></div></div>
+      <div class="wk ui"><h3>Запуск <em>рубрик</em></h3><div class="tags"><span>Тренер отвечает</span><span>Fun fact</span><span>Родитель и ребёнок</span></div></div>
+      <div class="wk ui"><h3>Совместные <em>посты</em></h3><div class="tags"><span>@prosport_events</span><span>ученик академии</span><span>падел-день</span></div></div>
+      <div class="wk ui"><h3>Зима и <em>кемп</em></h3><div class="tags"><span>переезд в зал</span><span>тизер Tenerife Camp</span><span>итоговый рилс</span><span>разбор месяца</span></div></div>
+      <div class="goals push"><div><b>12</b><span>рилсов за месяц</span></div><div><b>5 000+</b><span>просмотров у обычного рилса</span></div><div><b>1</b><span>рубрика про детей</span></div><div><b>2</b><span>совместных поста</span></div></div>
+    </section>
+
+    <!-- 10 · демо -->
+    <section class="slide" data-i="9">
+      <div class="eyebrow">Демо-ролик · 15 секунд</div>
+      <h2>«Tennis for <em>everyone</em>»</h2>
+      <div class="player ui">
+        <video id="demo" src="video/demo.mp4" poster="video/demo_poster.jpg" muted loop playsinline preload="metadata"></video>
+        <button id="snd" aria-label="Включить звук">🔇 нажмите для звука</button>
+      </div>
+      <p class="sub">Хук-вопрос, склейки в бит, слоу-мо и запись на пробную тренировку в конце.</p>
+      <div class="soon push">Демо собрано из открытых источников, чтобы показать подход. На вашем аккаунте сделаем то же на ваших кадрах.</div>
+    </section>
+
+    <!-- 11 · финал -->
+    <section class="slide end" data-i="10">
+      <div class="photo"><img src="img/team.jpg" alt=""></div>
+      <div class="push"></div>
+      <div class="eyebrow">Что дальше</div>
+      <h1>Начнём с <em>одного</em> ролика на ваших кадрах?</h1>
+      <p class="sub">Аналитика, сценарии, съёмка, моушн, UGC и ведение. Одна команда под вашу академию.</p>
+      <div class="sign">Your Agency · Прага</div>
+      <div class="credit">Иллюстративные фото: Pexels и сгенерированные</div>
+    </section>
+
+    <div class="tap prev" id="tPrev" aria-hidden="true"></div>
+    <div class="tap next" id="tNext" aria-hidden="true"></div>
+  </div>
+</div>
+<div class="nav"><button id="bPrev" aria-label="Назад">←</button><button id="bNext" aria-label="Дальше">→</button></div>
+
+<script>
+  const slides = [...document.querySelectorAll(".slide")], N = slides.length;
+  const bars = document.getElementById("bars"), count = document.getElementById("count");
+  bars.innerHTML = slides.map(() => "<span><b></b></span>").join("");
+  let cur = 0;
+  function show(i) {
+    cur = Math.max(0, Math.min(N - 1, i));
+    slides.forEach((s, k) => s.classList.toggle("on", k === cur));
+    [...bars.children].forEach((b, k) => b.classList.toggle("done", k <= cur));
+    count.textContent = (cur + 1) + " / " + N;
+    if (typeof syncDemo === "function") syncDemo();
+    if (cur === 1) { const m = document.getElementById("m1"); m.classList.remove("go"); requestAnimationFrame(() => setTimeout(() => m.classList.add("go"), 250)); }
+  }
+  // демо-ролик играет без звука, пока открыт его слайд; звук по нажатию
+  const demo = document.getElementById("demo"), snd = document.getElementById("snd");
+  function syncDemo() { if (cur === 9) { demo.play().catch(() => {}); } else { demo.pause(); } }
+  snd.addEventListener("click", (e) => { e.stopPropagation(); demo.muted = !demo.muted; if (!demo.muted) { demo.currentTime = 0; demo.play().catch(() => {}); }
+    snd.textContent = demo.muted ? "🔇 нажмите для звука" : "🔊 звук включён"; });
+  demo.addEventListener("click", (e) => { e.stopPropagation(); demo.paused ? demo.play() : demo.pause(); });
+  const next = () => show(cur + 1), prev = () => show(cur - 1);
+  document.getElementById("tNext").onclick = next; document.getElementById("tPrev").onclick = prev;
+  document.getElementById("bNext").onclick = next; document.getElementById("bPrev").onclick = prev;
+  addEventListener("keydown", (e) => { if (e.key === "ArrowRight") next(); if (e.key === "ArrowLeft") prev(); });
+  // свайп
+  let sx = null; const deck = document.getElementById("deck");
+  deck.addEventListener("pointerdown", (e) => { if (!e.target.closest(".rail")) sx = e.clientX; });
+  deck.addEventListener("pointerup", (e) => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 50) (dx < 0 ? next : prev)(); });
+
+  // 3 · график: 25 рилсов по порядку, тап по столбику показывает ролик
+  const R = [[3009, "PIECE OF ART: рисунок Серены", "17 июн"], [2593, "Когда выбрались на корт всё обсудить", "1 июл"], [3199, "Бэкстейдж", "3 июл"],
+    [2424, "SUMMER HITS DIFFERENT", "12 июл"], [4501, "MADEIRA IS CALLING", "17 июл"], [2595, "TENNIS IS HIGHLY ADDICTIVE", "21 июл"],
+    [8290, "FUN FACT ABOUT TENNIS", "24 июл"], [2058, "PRO GRAND SLAM #4", "29 июл"], [7262, "MADEIRA IS GETTING CLOSER", "11 авг"],
+    [9720, "LAST CHANCE TO JOIN US: Мадейра", "25 авг"], [5068, "TENNIS & STRETCHING, коллаб", "2 сен"], [4052, "TWO HANDS", "16 сен"],
+    [5034, "Нам к 9:00 завтра, а вам?", "18 сен"], [5660, "MADEIRA DAYS", "24 сен"], [1884, "THIS IS YOUR SIGN TO START", "25 сен"],
+    [5189, "Тренер Александр отвечает", "30 сен"], [1588, "Ждём вас на тренировках!", "14 окт"], [4566, "OUR BEAUTIFUL GIRLS", "20 окт"], [3071, "NO ONE CARES", "27 окт"]];
+  const MED = 4052, svg = document.getElementById("chart"), pick = document.getElementById("pick"), ns = "http://www.w3.org/2000/svg";
+  const W = 360, H = 200, L = 6, Rt = 6, T = 10, B = 18, MAX = 10200, bw = (W - L - Rt) / R.length, y = (v) => T + (H - T - B) * (1 - v / MAX);
+  const mk = (n, a) => { const e = document.createElementNS(ns, n); for (const k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; };
+  const fmt = (v) => v.toLocaleString("ru-RU").replace(/ /g, " ");
+  const rects = R.map(([v], i) => {
+    const r = mk("rect", { class: "bar", x: L + i * bw + bw * 0.16, y: y(Math.max(v, MAX * 0.015)), width: bw * 0.68, height: y(0) - y(Math.max(v, MAX * 0.015)), rx: 2.5, fill: v >= MED * 2 ? "#d4ec3a" : "#b8643c" });
+    r.addEventListener("click", (e) => { e.stopPropagation(); select(i); });
+    return r;
+  });
+  mk("line", { x1: L, x2: W - Rt, y1: y(MED), y2: y(MED), stroke: "#f4f1ea", "stroke-width": 1, "stroke-dasharray": "3 3", opacity: 0.7 });
+  [["июн", 0], ["авг", 8], ["окт", 16]].forEach(([t, i]) => { const e = mk("text", { x: L + i * bw + bw / 2, y: H - 4, "text-anchor": "middle", "font-size": 9, fill: "#f4f1ea", opacity: 0.6, "font-family": "JetBrains Mono, monospace" }); e.textContent = t; });
+  function select(i) {
+    rects.forEach((r, k) => r.style.opacity = k === i ? 1 : 0.45);
+    const [v, name, d] = R[i], m = (v / MED).toFixed(1).replace(".", ",");
+    pick.innerHTML = `<span class="m">${d} · ×${m} от обычного</span><b>${name}</b><span>${fmt(v)} просмотров</span>`;
+  }
+  select(9);
+
+  // 4 · раскрывающиеся строки
+  document.querySelectorAll(".acc button").forEach((b) => b.addEventListener("click", (e) => {
+    e.stopPropagation(); document.querySelectorAll(".acc button").forEach((x) => x.setAttribute("aria-expanded", String(x === b)));
+  }));
+  // 6 · флип-карточки
+  document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", (e) => { e.stopPropagation(); c.setAttribute("aria-pressed", String(c.getAttribute("aria-pressed") !== "true")); }));
+  // 8 · форматы
+  document.querySelectorAll(".fcard").forEach((c) => c.addEventListener("click", (e) => { e.stopPropagation(); c.setAttribute("aria-pressed", String(c.getAttribute("aria-pressed") !== "true")); }));
+  // 8 · лента форматов: точки и стрелки показывают, что её можно листать
+  const rail = document.getElementById("rail"), cards = [...rail.children], dots = document.getElementById("dots");
+  dots.innerHTML = cards.map(() => "<i></i>").join("");
+  const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
+  const sync = () => { const k = Math.round(rail.scrollLeft / step()); [...dots.children].forEach((d, i) => d.classList.toggle("on", i === k)); };
+  rail.addEventListener("scroll", sync, { passive: true }); sync();
+  document.getElementById("rNext").onclick = (e) => { e.stopPropagation(); rail.scrollBy({ left: step() }); };
+  document.getElementById("rPrev").onclick = (e) => { e.stopPropagation(); rail.scrollBy({ left: -step() }); };
+  // 9 · недели
+  const tabs = [...document.querySelectorAll(".tab")], wks = [...document.querySelectorAll(".wk")];
+  tabs.forEach((t) => t.addEventListener("click", (e) => { e.stopPropagation(); const w = +t.dataset.w;
+    tabs.forEach((x, k) => x.setAttribute("aria-selected", String(k === w))); wks.forEach((x, k) => x.classList.toggle("on", k === w)); }));
+
+  // 7 · сетка профиля: «сейчас» (разнобой) против «в едином стиле»
+  const g9 = document.getElementById("grid9");
+  const NOW = [["#5f6b4e", "", ""], ["#2b2b2b", "TENNIS FOR EVERYONE", "#c8f04a"], ["#3d2618", "ТЕННИСНЫЕ УЖАСЫ", "#f0a040"], ["#8a7f72", "", ""], ["#e8e2d6", "КАКОЙ ОВЕРГРИП НУЖЕН ТЕБЕ?", "#222"],
+    ["#6f7f5f", "", ""], ["#c9a24a", "MADEIRA", "#fff"], ["#1d3d5c", "PRO GRAND SLAM", "#fff"], ["#9c8f86", "", ""]];
+  const NOWF = ["Impact, sans-serif", "Georgia, serif", "Trebuchet MS, sans-serif"];
+  const NEW = ["img/coach.jpg", "", "img/hit.jpg", "", "img/net.jpg", "", "img/drill.jpg", "", "img/legs.jpg"];
+  const NEWTXT = ["", "Тренер отвечает", "", "Fun fact", "", "Родитель и ребёнок", "", "Первая тренировка", ""];
+  const NEWBG = ["", "#111111", "", "#d4ec3a", "", "#b8643c", "", "#f4f1ea", ""], NEWFG = ["", "#f4f1ea", "", "#111111", "", "#f4f1ea", "", "#111111", ""];
+  for (let k = 0; k < 9; k++) g9.appendChild(Object.assign(document.createElement("div"), { innerHTML: "<span></span>" }));
+  function grid(mode) {
+    [...g9.children].forEach((c, k) => {
+      const s = c.firstChild;
+      if (mode === "now") { c.style.backgroundImage = "none"; c.style.background = NOW[k][0]; s.textContent = NOW[k][1]; s.style.color = NOW[k][2]; s.style.fontFamily = NOWF[k % NOWF.length]; }
+      else { c.style.background = NEW[k] ? `center / cover no-repeat url(${NEW[k]})` : NEWBG[k]; s.textContent = NEWTXT[k]; s.style.color = NEWFG[k]; s.style.fontFamily = "var(--serif)"; }
+    });
+    document.getElementById("gNow").setAttribute("aria-pressed", String(mode === "now"));
+    document.getElementById("gNew").setAttribute("aria-pressed", String(mode !== "now"));
+  }
+  document.getElementById("gNow").onclick = (e) => { e.stopPropagation(); grid("now"); };
+  document.getElementById("gNew").onclick = (e) => { e.stopPropagation(); grid("new"); };
+  grid("new");
+
+  // интерактивные элементы не листают сторис
+  document.querySelectorAll(".ui").forEach((u) => u.addEventListener("pointerup", (e) => e.stopPropagation()));
+  // ПК: раскладываем каждый слайд на текст (слева) и визуал (справа); на телефоне исходный порядок
+  const TXT = ".eyebrow, h1, h2, .sub, .hint, .sign, .credit";
+  const orig = slides.map((sl) => [...sl.children]);
+  const wideMQ = matchMedia("(min-width: 900px) and (min-aspect-ratio: 1/1)");   // любое горизонтальное окно ПК, даже низкое
+  function layout() {
+    const wide = wideMQ.matches;
+    document.body.classList.toggle("wide", wide);
+    slides.forEach((sl, k) => {
+      if (wide && !sl.querySelector(":scope > .txt")) {
+        const t = document.createElement("div"), v = document.createElement("div"); t.className = "txt"; v.className = "vis";
+        orig[k].forEach((el) => { if (el.classList.contains("photo")) return; (el.matches(TXT) ? t : v).appendChild(el); });
+        sl.append(t, v);
+      } else if (!wide && sl.querySelector(":scope > .txt")) {
+        sl.querySelectorAll(":scope > .txt, :scope > .vis").forEach((w) => w.remove());
+        orig[k].forEach((el) => sl.appendChild(el));
+      }
+    });
+  }
+  const navEl = document.querySelector(".nav"), deckEl = document.getElementById("deck");
+  const placeNav = () => (wideMQ.matches ? deckEl.appendChild(navEl) : document.body.appendChild(navEl));
+  layout(); placeNav(); wideMQ.addEventListener("change", () => { layout(); placeNav(); });
+  // ссылка на конкретную карточку: #s3 и т.п.
+  const h = location.hash.match(/^#s(\d+)$/); show(h ? +h[1] - 1 : 0);
+</script>
+
+</body>
+</html>
